@@ -1,0 +1,18 @@
+\begin{table}[ht]
+\caption{Comparison between heterogeneous and homogeneous experts on DepthTrack.}
+\label{tab:ablation_moe}
+\centering
+\small
+\begin{tabular}{cc|ccc}
+\toprule
+Type & Config & F-Score & Re & Pr \\
+\midrule
+\multirow{3}{*}{Hom. Experts} & small & 55.6 & 56.8 & 54.4 \\
+ & middle & 56.0 & 57.2 & 54.7 \\
+ & large &  &  &  \\
+\midrule
+\multirow{2}{*}{Het. Experts} & hybrid & 57.5 & 58.8 & 56.2 \\
+& \textbf{Ours} & \textbf{58.8} & \textbf{60.1} & \textbf{57.5} \\
+\bottomrule
+\end{tabular}
+\end{table}

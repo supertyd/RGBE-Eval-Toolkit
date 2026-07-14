@@ -1,0 +1,231 @@
+\begin{table*}[t]
+\caption{SOTA comparison on $\mathrm{DepthTrack}$ \cite{depthtrack} and VOT-RGBD22~\cite{vot2022} for RGB-Depth, $\mathrm{LasHeR}$\cite{li2021lasher} and $\mathrm{RGBT234}$\cite{rgbt234} for RGB-Thermal, and $\mathrm{VisEvent}$\cite{wang2023visevent} for RGB-Event. The best and second methods are labeled with \textbf{bold} and \underline{underline} styles.}
+\label{tab-sota-miss}
+\centering
+\setlength{\tabcolsep}{3mm} % 设置列间距
+\small % 设置字体大小
+\begin{tabular}{l|ccc|ccc|cc|cc|cc}
+\toprule
+\multirow{2}{*}{Method} 
+& \multicolumn{3}{c|}{DepthTrack~\cite{depthtrack}} 
+& \multicolumn{3}{c|}{VOT-RGBD22~\cite{vot2022}}
+& \multicolumn{2}{c|}{LasHeR~\cite{li2021lasher}} 
+& \multicolumn{2}{c|}{RGBT234~\cite{rgbt234}} 
+& \multicolumn{2}{c}{VisEvent~\cite{wang2023visevent}} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11} \cmidrule(lr){12-13}
+& F-score & Re & Pr 
+& EAO & Acc.& Rob.
+& PR & SR 
+& MPR & MSR 
+& PR & SR \\
+\midrule
+SiamM-Ds~\cite{VOT2019}
+& 33.6 & 26.4 & 46.3 &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   \\
+SiamMask\_E~\cite{SiamMask}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 56.2 & 36.9 \\
+% Siam-LTD~\cite{vot2020}
+% & 37.6 & 34.2 & 41.8 &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   \\
+ATCAIS~\cite{vot2020}
+& 47.6 & 45.5 & 50.0 & 55.9 & 76.1 & 73.9 &  -   &  -   &  -   &  -   &  -   &  -   \\
+FANet~\cite{fanet}
+&  -   &  -   &  -   &  -   &  -   &  -   & 44.1 & 30.9 & 78.7 & 55.3 &  -   &  -   \\
+SiamBAN\_E~\cite{siamban}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 59.1 & 40.5\\
+GLGS-D~\cite{vot2020}
+& 45.3 & 36.9 & 58.4 &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   \\
+ATOM~\cite{atom}
+&  -   &  -   &  -   & 50.5 & 59.8 & 68.8 &  -   &  -   &  -   &  -   &  -   &  -   \\
+
+SiamCar\_E~\cite{Stark}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 59.9 & 42.0\\
+DiMP~\cite{dimp}
+&  -   &  -   &  -   & 54.3 & 70.3 & 73.1 &  -   &  -   &  -   &  -   &  -   &  -   \\
+LTDSEd~\cite{VOT2019}
+& 40.5 & 38.2 & 43.0 &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   \\
+
+MaCNet~\cite{macnet}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 79.0 & 55.4 &  -   &  -   \\
+DAL~\cite{dal}
+& 42.9 & 36.9 & 51.2 &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   \\
+CAT~\cite{cat}
+&  -   &  -   &  -   &  -   &  -   &  -   & 45.0 & 31.4 & 80.4 & 56.1 &  -   &  -   \\
+DMTrack~\cite{vot2022}
+&  -   &  -   &  -   & 65.8 & 75.8 & 85.1 &  -   &  -   &  -   &  -   &  -   &  -   \\
+DDiMP~\cite{vot2020}
+& 48.5 & 56.9 & 50.3 &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   \\
+% ATOM\_E~\cite{atom}
+% &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 60.8 & 41.2\\
+MDNet\_E~\cite{MDNet}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 66.1 & 42.6\\
+ProTrack~\cite{protrack} 
+& 57.8 & 57.3 & 58.3 & 65.1 & 80.1 & 80.2 & 53.8 & 42.0 & 79.5 & 59.9 & 63.2 & 47.1\\
+VITAL\_E~\cite{VITAL}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 64.9 & 41.5\\
+% PrDiMP\_E~\cite{PrDiMP}
+% &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 64.4 & 45.3\\
+LTMU-B~\cite{LTMU}
+& 46.0 & 41.7 & 51.2 &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   \\
+OSTrack~\cite{ostrack}
+& 52.9 & 52.2 & 53.6 & 67.6 & 80.3 & 83.3 & 51.5 & 41.2 & 72.9 & 54.9 & 69.5 & 53.4 \\
+LTMU\_E~\cite{LTMU}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 65.5 & 45.9\\
+% TransT\_E~\cite{transt}
+% &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 65.0 & 47.4\\
+MCITrack~\cite{mcitrack} 
+& 53.8 & 54.9 & 52.7 & 74.3 & 82.3 & 90.6 & 64.2 & 50.2 & 79.1 & 60.4 & 69.7 & 53.3\\
+SiamRCNN\_E~\cite{SiamRCNN}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 65.9 & 49.9\\
+JMMAC~\cite{jmmac}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 79.0 & 57.3 &  -   &  -   \\
+
+ViPT~\cite{vipt} 
+& 59.4 & 59.6 & 59.2 & 72.1 & 81.5 & 87.1 & 65.1 & 52.5 & 83.5 & 61.7 & 75.8 & 59.2\\
+CMPP~\cite{cmpp}
+&  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   & 82.3 & 57.5 &  -   &  -   \\
+APFNet~\cite{apfnet}
+&  -   &  -   &  -   &  -   &  -   &  -   & 50.0 & 36.2 & 82.7 & 57.9 &  -   &  -   \\
+% CA3DMS~\cite{ca3dms}
+% & 22.3 & 22.8 & 21.8 &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   &  -   \\
+
+
+DeT~\cite{depthtrack}
+& 53.2 & 50.6 & 56.0 & 65.7 & 76.0 & 84.5 &  -   &  -   &  -   &  -   &  -   &  -   \\
+SPT~\cite{rgbd1k}
+& 53.8 & 54.9 & 52.7 & 65.1 & 79.8 & 85.1 &  -   &  -   &  -   &  -   &  -   &  -   \\
+UnTrack~\cite{untrack} 
+& 61.0 & 60.8 & 61.1 & 72.1 & 82.0 & 86.9 & 64.6 & 51.3 & 84.2 & 62.5 & 75.5 & 58.9\\
+SBT-RGBD~\cite{sbt}
+&  -   &  -   &  -   & 70.8 & 80.9 & 86.4 &  -   &  -   &  -   &  -   &  -   &  -   \\
+SDSTrack~\cite{hou2024sdstrack} 
+& 61.4 & 60.9 & 61.9 & 72.8 & 81.2 & 88.3 & 66.5 & 53.1 & 84.8 & 62.5 & 76.7 & 59.7\\
+OneTracker~\cite{hong2024onetracker} 
+& 60.9 & 60.4 & 60.7 & 72.7 & 81.9 & 87.2 & 67.2 & 53.8 & 85.7 & 64.2 & 76.7 & 60.8\\
+SUTrack~\cite{chen2024sutrack} 
+& 65.1 & \underline{65.7} & 64.5 & 76.5 & 82.8 & 91.8 & 74.5 & 59.5 & 92.2 & \underline{69.5} & 79.9 & 62.7\\
+STTrack~\cite{sttrack} 
+& 63.3 & 63.4 & 63.2 & 77.6 & 82.5 & 93.7 & \underline{76.0} & 60.3 & 89.8 & 66.7 & 78.6 & 61.9\\
+FlexTrack 
+& \underline{67.0} & \textbf{66.9} & \textbf{67.1} & \underline{78.0} & \underline{83.8} & \underline{93.1} & \textbf{77.3} & \textbf{62.0} & \underline{92.7} & \textbf{69.9} & \textbf{81.3} & \textbf{64.1}\\
+
+\midrule
+
+\textbf{FlexTrackV2 (ours)}
+& \textbf{67.8} & \textbf{69.3} & \underline{66.4} & \textbf{78.4}  & \textbf{83.9}  & \textbf{93.9} & \textbf{77.3} & \underline{61.9} & \textbf{93.4} & \textbf{69.9} & \underline{81.2} & \underline{64.0}\\
+
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+
+
+
+\begin{table*}[t]
+\caption{SOTA comparison on $\mathrm{DepthTrack}_{miss}$ \cite{depthtrack} for RGB-Depth, $\mathrm{LasHeR}_{miss}$\cite{li2021lasher} and $\mathrm{RGBT234}_{miss}$\cite{rgbt234} for RGB-Thermal, and $\mathrm{VisEvent}_{miss}$\cite{wang2023visevent} for RGB-Event. The best and second methods are labeled with \textbf{bold} and \underline{underline} styles.}
+\label{tab-sota-miss}
+\centering
+\setlength{\tabcolsep}{3mm} % 设置列间距
+\small % 设置字体大小
+\begin{tabular}{l|ccc|cc|cc|cc}
+\toprule
+\multirow{2}{*}{Method} 
+& \multicolumn{3}{c|}{DepthTrack$_{miss}$~\cite{depthtrack}} 
+& \multicolumn{2}{c|}{LasHeR$_{miss}$~\cite{li2021lasher}} 
+& \multicolumn{2}{c|}{RGBT234$_{miss}$~\cite{rgbt234}} 
+& \multicolumn{2}{c}{VisEvent$_{miss}$~\cite{wang2023visevent}} \\
+\cline{2-4} \cline{5-6} \cline{7-8} \cline{9-10}
+& F-score & Re & Pr 
+& PR & SR 
+& MPR & MSR 
+& PR & SR \\
+\midrule
+
+MCITrack~\cite{mcitrack} 
+& 49.7 & 42.9 & 59.1 & 34.2 & 40.0 & 53.6 & 40.9 & 49.9 & 36.5 \\
+ViPT~\cite{vipt} 
+& 44.4 & 40.5 & 46.6 & 40.1 & 34.0 & 52.4 & 39.4 & 57.2 & 43.2 \\
+IPT~\cite{ipt} 
+& - & - & - & 61.7 & 46.4 & 82.0 & 59.4 & - & - \\
+SDSTrack~\cite{hou2024sdstrack} 
+& 46.7 & 42.0 & 52.7 & 52.5 & 43.1 & 67.0 & 48.8 & 62.6 & 46.9 \\
+SeqTrackv2~\cite{seqtrack} 
+& 45.0 & 40.9 & 50.0 & 50.0 & 39.9 & 70.8 & 49.9 & 57.6 & 43.1 \\
+SUTrack~\cite{chen2024sutrack} 
+& 49.5 & 47.3 & 51.9 & 58.3 & 47.6 & 82.0 & 60.8 & 66.6 & 50.5 \\
+STTrack \cite{sttrack} 
+& 49.9 & {48.8} & 51.0 & 54.5 & 44.9 & 73.8 & 54.2 & 65.5 & 49.7 \\
+FlexTrack & \underline{57.8} & \underline{56.1} & \textbf{59.6} & \underline{65.1} & \underline{52.3} & \underline{84.1} & \underline{62.6} & \underline{72.8} & \underline{55.0} \\
+
+\midrule
+
+\textbf{FlexTrackV2 (ours)}
+& \textbf{58.8} & \textbf{60.1} & \underline{57.5} & \textbf{67.6} & \textbf{54.4} & \textbf{85.6} & \textbf{62.9} & \textbf{75.1} & \textbf{56.9}\\
+
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+% \begin{table*}[t]
+% \caption{SOTA comparison on $\mathrm{DepthTrack}$ \cite{depthtrack} and VOT-RGBD22~\cite{vot2022} for RGB-Depth, $\mathrm{LasHeR}$\cite{li2021lasher} and $\mathrm{RGBT234}$\cite{rgbt234} for RGB-Thermal, and $\mathrm{VisEvent}$\cite{wang2023visevent} for RGB-Event. The best and second methods are labeled with {bold} and {underline} styles.}
+% \label{tab-sota-miss}
+% \centering
+% \setlength{\tabcolsep}{3mm} % 设置列间距
+% \small % 设置字体大小
+% \begin{tabular}{l|ccc|ccc|cc|cc|cc}
+% \toprule
+% \multirow{2}{*}{Method} 
+% & \multicolumn{3}{c|}{DepthTrack~\cite{depthtrack}} 
+% & \multicolumn{3}{c|}{VOT-RGBD22~\cite{vot2022}}
+% & \multicolumn{2}{c|}{LasHeR~\cite{li2021lasher}} 
+% & \multicolumn{2}{c|}{RGBT234~\cite{rgbt234}} 
+% & \multicolumn{2}{c}{VisEvent~\cite{wang2023visevent}} \\
+% \cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11} \cmidrule(lr){12-13}
+% & F-score & Re & Pr 
+% & EAO & Acc.& Rob.
+% & P & AUC 
+% & MPR & MSR 
+% & P & AUC \\
+% \midrule
+
+% FANet~\cite{fanet}
+% &  -   &  -   &  -   &  -   &  -   &  -   & 44.1 & 30.9 & 78.7 & 55.3 &  -   &  -   \\
+% CAT~\cite{cat}
+% &  -   &  -   &  -   &  -   &  -   &  -   & 45.0 & 31.4 & 80.4 & 56.1 &  -   &  -   \\
+% APFNet~\cite{apfnet}
+% &  -   &  -   &  -   &  -   &  -   &  -   & 50.0 & 36.2 & 82.7 & 57.9 &  -   &  -   \\
+% ATCAIS~\cite{vot2020}
+% & 47.6 & 45.5 & 50.0 & 55.9 & 76.1 & 73.9 &  -   &  -   &  -   &  -   &  -   &  -   \\
+% DeT~\cite{depthtrack}
+% & 53.2 & 50.6 & 56.0 & 65.7 & 76.0 & 84.5 &  -   &  -   &  -   &  -   &  -   &  -   \\
+% SPT~\cite{rgbd1k}
+% & 53.8 & 54.9 & 52.7 & 65.1 & 79.8 & 85.1 &  -   &  -   &  -   &  -   &  -   &  -   \\
+% OSTrack~\cite{ostrack}
+% & 52.9 & 52.2 & 53.6 & 67.6 & 80.3 & 83.3 & 51.5 & 41.2 & 72.9 & 54.9 & 69.5 & 53.4 \\
+% MCITrack~\cite{mcitrack} 
+% & 53.8 & 54.9 & 52.7 & 74.3 & 82.3 & 90.6 & 64.2 & 50.2 & 79.1 & 60.4 & 69.7 & 53.3\\
+% ProTrack~\cite{protrack} 
+% & 57.8 & 57.3 & 58.3 & 65.1 & 80.1 & 80.2 & 53.8 & 42.0 & 79.5 & 59.9 & 63.2 & 47.1\\
+% ViPT~\cite{vipt} 
+% & 59.4 & 59.6 & 59.2 & 72.1 & 81.5 & 87.1 & 65.1 & 52.5 & 83.5 & 61.7 & 75.8 & 59.2\\
+% UnTrack~\cite{untrack} 
+% & 61.0 & 60.8 & 61.1 & 72.1 & 82.0 & 86.9 & 64.6 & 51.3 & 84.2 & 62.5 & 75.5 & 58.9\\
+% SDSTrack~\cite{hou2024sdstrack} 
+% & 61.4 & 60.9 & 61.9 & 72.8 & 81.2 & 88.3 & 66.5 & 53.1 & 84.8 & 62.5 & 76.7 & 59.7\\
+% OneTracker~\cite{hong2024onetracker} 
+% & 60.9 & 60.4 & 60.7 & 72.7 & 81.9 & 87.2 & 67.2 & 53.8 & 85.7 & 64.2 & 76.7 & 60.8\\
+% SUTrack~\cite{chen2024sutrack} 
+% & 65.1 & \underline{65.7} & 64.5 & 76.5 & 82.8 & 91.8 & 74.5 & 59.5 & 92.2 & \underline{69.5} & 79.9 & 62.7\\
+% STTrack~\cite{sttrack} 
+% & 63.3 & 63.4 & 63.2 & 77.6 & 82.5 & 93.7 & \underline{76.0} & 60.3 & 89.8 & 66.7 & 78.6 & 61.9\\
+% FlexTrack 
+% & \underline{67.0} & \textbf{66.9} & \textbf{67.1} & \underline{78.0} & \underline{83.8} & \underline{93.1} & \textbf{77.3} & \textbf{62.0} & \underline{92.7} & \textbf{69.9} & \textbf{81.4} & \textbf{64.1}\\
+
+% \midrule
+
+% \textbf{FlexTrackV2 (ours)}
+% & \textbf{67.1} & \textbf{66.9} & \underline{67.0} & \textbf{78.4}  & \textbf{83.9}  & \textbf{93.9}  & \textbf{77.3} & \underline{61.9} & \textbf{93.4} & \textbf{69.9} & \underline{81.2} & \underline{64.0}\\
+
+% \bottomrule
+% \end{tabular}
+% \end{table*}
