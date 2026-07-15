@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Testing / Results
+tracking_results/
+tmp_mat/
+res_fig/
+test_results/
+
+# Distribution / Packaging
+dist/
+build/
+*.egg-info/
+*.egg
