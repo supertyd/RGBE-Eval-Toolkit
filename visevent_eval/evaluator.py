@@ -159,7 +159,12 @@ def eval_tracker(seqs, trackers, eval_type, name_tracker_all, tmp_mat_path, path
     ave_success_rate_plot_err = np.zeros((num_tracker, len(seqs), len(threshold_set_error)))
 
     for i, s in enumerate(seqs):
-        anno_file = os.path.join(path_anno, 'gt_rect', s + '.txt')
+        # Support for VisEvent (gt_rect subfolder) and CRSOT (no gt_rect subfolder)
+        anno_file_with_gt = os.path.join(path_anno, 'gt_rect', s + '.txt')
+        if os.path.exists(anno_file_with_gt):
+            anno_file = anno_file_with_gt
+        else:
+            anno_file = os.path.join(path_anno, s + '.txt')
         absent_file = os.path.join(path_anno, 'absent', s + '.txt')
 
         anno = np.loadtxt(anno_file, delimiter=',') 
@@ -299,6 +304,7 @@ def main():
     parser.add_argument("--annos", type=str, default=DEFAULT_ANNO_DIR, help="Path to VisEvent annos folder (defaults to built-in)")
     parser.add_argument("--tmp_mat", type=str, default="./tmp_mat", help="Path to save intermediate .npz files")
     parser.add_argument("--res_fig", type=str, default="./res_fig", help="Path to save plot figures")
+    parser.add_argument("--dataset_name", type=str, default="VisEvent Testing Set", help="Dataset name to show on plot titles (e.g. 'CRSOT')")
     args = parser.parse_args()
     tmp_mat_path = args.tmp_mat
     path_anno = args.annos
@@ -316,14 +322,14 @@ def main():
                 found_trackers.append({"name": d.replace("_tracking_result", "")})
         if found_trackers:
             trackers = found_trackers
-    sequences = config_sequence(evaluation_dataset_type)
+    sequences = config_sequence(evaluation_dataset_type, path_anno)
 
     name_tracker_all = [t['name'] for t in trackers]
 
     eval_type = 'OPE'
     
     print("Evaluating trackers...")
-    eval_tracker(sequences, trackers, eval_type, name_tracker_all, tmp_mat_path, path_anno, rp_all, norm_dst)
+    eval_tracker(sequences, trackers, eval_type, name_tracker_all, tmp_mat_path, path_anno, rp_all, norm_dst, dataset_title=args.dataset_name)
     
     num_tracker = len(trackers)
     idx_seq_set = list(range(len(sequences)))
