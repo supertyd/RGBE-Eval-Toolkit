@@ -289,10 +289,14 @@ def plot_draw_save(num_tracker, ave_success_rate_plot, idx_seq_set, rank_num, ra
     plt.close()
 
 import argparse
+import os
+
+DEFAULT_ANNO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'annos')
+
 def main():
     parser = argparse.ArgumentParser(description="Evaluate VisEvent Trackers.")
     parser.add_argument("--tracking_results", type=str, default="./tracking_results", help="Path to your trackers results folder")
-    parser.add_argument("--annos", type=str, default="./annos", help="Path to VisEvent annos folder")
+    parser.add_argument("--annos", type=str, default=DEFAULT_ANNO_DIR, help="Path to VisEvent annos folder (defaults to built-in)")
     parser.add_argument("--tmp_mat", type=str, default="./tmp_mat", help="Path to save intermediate .npz files")
     parser.add_argument("--res_fig", type=str, default="./res_fig", help="Path to save plot figures")
     args = parser.parse_args()
