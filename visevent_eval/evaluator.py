@@ -167,8 +167,17 @@ def eval_tracker(seqs, trackers, eval_type, name_tracker_all, tmp_mat_path, path
             anno_file = os.path.join(path_anno, s + '.txt')
         absent_file = os.path.join(path_anno, 'absent', s + '.txt')
 
-        anno = np.loadtxt(anno_file, delimiter=',') 
-        absent_anno = np.loadtxt(absent_file)
+        # Robust ground-truth loading (supports comma or space delimiter)
+        try:
+            anno = np.loadtxt(anno_file, delimiter=',')
+        except ValueError:
+            anno = np.loadtxt(anno_file)
+            
+        # Make absent annotations optional (COESOT and others might not have them)
+        if os.path.exists(absent_file):
+            absent_anno = np.loadtxt(absent_file)
+        else:
+            absent_anno = np.zeros(anno.shape[0])
 
         for k, t in enumerate(trackers):
             res_file1 = os.path.join(rp_all, t['name'] + '_tracking_result', s + '.txt')
