@@ -39,7 +39,7 @@ If you are evaluating another dataset like **CRSOT**, you can provide your own `
 python -m visevent_eval.evaluator \
     --tracking_results ./CRSOT_Evaluation/tracking_results \
     --annos ./CRSOT_Evaluation/annos \
-    --dataset_name "CRSOT Dataset" \
+    --dataset_name CRSOT \
     --tmp_mat ./tmp_mat \
     --res_fig ./res_fig
 ```
