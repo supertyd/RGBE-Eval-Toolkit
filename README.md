@@ -40,11 +40,18 @@ visevent-eval \
     --res_fig ./res_fig
 ```
 
-If you leave out the arguments, it will automatically search for the default folder names in the current directory:
+### Parameters Explained
+If you are wondering what these parameters do:
+- `--tracking_results`: Path to your tracking results folder. The script automatically detects subfolders ending with `_tracking_result` as individual trackers.
+- `--annos`: Path to the VisEvent annotations folder (must contain `gt_rect` and `absent`).
+- `--tmp_mat` (Temporary Matrix): Path to save intermediate cached data. The evaluation involves heavy computations for IoU and center errors. To save time on future runs (e.g., if you just want to re-draw the plot or print metrics again), the script caches the massive result matrices as `.npz` files in this folder. (This replaces the `.mat` files generated in the original MATLAB script).
+- `--res_fig` (Result Figures): Path to save the final plotted curve images. The script will output high-resolution `.png` files of the Precision and Success Rate plots into this folder, perfectly formatted and ready to be pasted into your paper.
+
+If you leave out the arguments, it will automatically search for the default folder names (`./tracking_results`, `./annos`, etc.) in your current directory:
 ```bash
 visevent-eval
 ```
 
 ## Outputs
-- **Metrics (.npz files):** Saved in the `tmp_mat` directory for further analysis (replacing the old MATLAB `.mat` files).
+- **Metrics (.npz files):** Saved in the `tmp_mat` directory for further analysis.
 - **Figures:** High-quality plotted `.png` curves saved in the `res_fig` directory, perfectly matching the original MATLAB chart styles.
