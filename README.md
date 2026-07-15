@@ -54,3 +54,6 @@ python -m visevent_eval.evaluator \
 ## Outputs
 - **Metrics (.npz files):** Saved in the `tmp_mat` directory for further analysis.
 - **Figures:** High-quality plotted `.png` curves saved in the `res_fig` directory, perfectly matching the original MATLAB chart styles.
+
+## Related Projects
+- [opacity-black/RGBT_toolkit](https://github.com/opacity-black/RGBT_toolkit) - A comprehensive toolkit for RGBT (RGB + Thermal) tracking evaluation. Highly recommended if you are working with RGBT datasets!
