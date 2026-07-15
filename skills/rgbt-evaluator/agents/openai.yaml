@@ -1,0 +1,3 @@
+display_name: RGBT Evaluator
+short_description: RGBT tracking evaluation (RGBT234, LasHeR, GTOT)
+default_prompt: I have tracking results for an RGBT dataset. Please run the RGBT_toolkit to calculate MPR/MSR metrics and generate plots.

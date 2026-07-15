@@ -66,17 +66,17 @@ Simply run it with `--dataset_name YOUR_DATASET_NAME` to get beautifully titled 
 - **Metrics (.npz files):** Saved in the `tmp_mat` directory for further analysis.
 - **Figures:** High-quality plotted `.png` curves saved in the `res_fig` directory, perfectly matching the original MATLAB chart styles.
 
-## Related Projects
-- [opacity-black/RGBT_toolkit](https://github.com/opacity-black/RGBT_toolkit) - A comprehensive toolkit for RGBT (RGB + Thermal) tracking evaluation. Highly recommended if you are working with RGBT datasets!
+## 🤖 AI Agent / Codex Skills
+This repository includes built-in AI skills designed for agentic coding assistants like **Codex**. These skills transform the evaluation process into a fully automated, conversational experience.
 
-## 🤖 AI Agent / Codex Skill
-This repository includes a built-in AI skill (`rgbe-evaluator`) designed for agentic coding assistants like **Codex**. This skill transforms the evaluation process into a fully automated, conversational experience.
+**Included Skills:**
+- **`rgbe-evaluator`**: Auto-evaluates RGB-Event datasets (VisEvent, CRSOT, COESOT) using this toolkit.
+- **`rgbt-evaluator`**: Auto-evaluates RGB-Thermal datasets (RGBT234, LasHeR, GTOT, RGBT210) using the [opacity-black/RGBT_toolkit](https://github.com/opacity-black/RGBT_toolkit).
 
 **How to use:**
-1. Install the skill from the `skills/rgbe-evaluator` directory in your agent environment.
-2. Simply ask your agent: *"Evaluate the tracking results in `./my_results` using the rgbe-evaluator skill."*
-3. The agent will autonomously:
-   - Install the `RGBE-Eval-Toolkit` if missing.
-   - Run the appropriate evaluation commands based on the dataset structure.
-   - Parse the `.npz` data matrices.
-   - Summarize and report the final PR (Precision Rate) and SR/AUC (Success Rate) metrics directly in the chat.
+1. Install the skills from the `skills/` directory in your agent environment.
+2. Simply ask your agent: *"Evaluate the tracking results in `./my_results` using the rgbt-evaluator skill."*
+3. The agent will autonomously install the tools, run the correct scripts, draw radar/curve charts, and summarize the final PR (Precision Rate) and SR (Success Rate) metrics directly in the chat.
+
+## Related Projects
+- [opacity-black/RGBT_toolkit](https://github.com/opacity-black/RGBT_toolkit) - A comprehensive toolkit for RGBT (RGB + Thermal) tracking evaluation. Highly recommended if you are working with RGBT datasets!
