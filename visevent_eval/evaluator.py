@@ -67,7 +67,27 @@ def config_plot_style():
     ]
     return plot_styles
 
-def config_sequence(eval_type):
+def config_sequence(eval_type, path_anno=None):
+    if path_anno and not path_anno.endswith('visevent_eval/annos'):
+        seqs = []
+        gt_dir = os.path.join(path_anno, 'gt_rect')
+        coesot_dir = os.path.join(path_anno, 'coesot_anno')
+        
+        if os.path.exists(gt_dir):
+            seqs = [f.replace('.txt', '') for f in os.listdir(gt_dir) if f.endswith('.txt') and not f.startswith('.')]
+        elif os.path.exists(coesot_dir):
+            seqs = [f for f in os.listdir(coesot_dir) if os.path.isdir(os.path.join(coesot_dir, f)) and not f.startswith('.')]
+        else:
+            # Check if there are directories with groundtruth.txt inside path_anno
+            dirs = [f for f in os.listdir(path_anno) if os.path.isdir(os.path.join(path_anno, f)) and not f.startswith('.')]
+            if dirs and os.path.exists(os.path.join(path_anno, dirs[0], 'groundtruth.txt')):
+                seqs = dirs
+            else:
+                seqs = [f.replace('.txt', '') for f in os.listdir(path_anno) if f.endswith('.txt') and not f.startswith('.')]
+                
+        if len(seqs) > 0:
+            return sorted(seqs)
+
     if eval_type == 'test_set':
         dataset_name = os.path.join(os.path.dirname(__file__), 'sequence_evaluation_config', 'VisEvent_testing_subset.txt')
     else:
@@ -147,7 +167,7 @@ def calc_seq_err_robust(results, rect_anno, absent_anno, norm_dst):
 
     return errCoverage, err_center
 
-def eval_tracker(seqs, trackers, eval_type, name_tracker_all, tmp_mat_path, path_anno, rp_all, norm_dst):
+def eval_tracker(seqs, trackers, eval_type, name_tracker_all, tmp_mat_path, path_anno, rp_all, norm_dst, dataset_title="VisEvent Testing Set"):
     num_tracker = len(trackers)
 
     threshold_set_overlap = np.arange(0, 1.05, 0.05)
@@ -159,13 +179,23 @@ def eval_tracker(seqs, trackers, eval_type, name_tracker_all, tmp_mat_path, path
     ave_success_rate_plot_err = np.zeros((num_tracker, len(seqs), len(threshold_set_error)))
 
     for i, s in enumerate(seqs):
-        # Support for VisEvent (gt_rect subfolder) and CRSOT (no gt_rect subfolder)
+        # Support for VisEvent, CRSOT, and COESOT structures
         anno_file_with_gt = os.path.join(path_anno, 'gt_rect', s + '.txt')
+        anno_file_coesot = os.path.join(path_anno, 'coesot_anno', s, 'groundtruth.txt')
+        anno_file_coesot_alt = os.path.join(path_anno, s, 'groundtruth.txt')
+        
         if os.path.exists(anno_file_with_gt):
             anno_file = anno_file_with_gt
+            absent_file = os.path.join(path_anno, 'absent', s + '.txt')
+        elif os.path.exists(anno_file_coesot):
+            anno_file = anno_file_coesot
+            absent_file = os.path.join(path_anno, 'coesot_anno', s, 'absent.txt')
+        elif os.path.exists(anno_file_coesot_alt):
+            anno_file = anno_file_coesot_alt
+            absent_file = os.path.join(path_anno, s, 'absent.txt')
         else:
             anno_file = os.path.join(path_anno, s + '.txt')
-        absent_file = os.path.join(path_anno, 'absent', s + '.txt')
+            absent_file = os.path.join(path_anno, 'absent', s + '.txt')
 
         # Robust ground-truth loading (supports comma or space delimiter)
         try:
@@ -360,7 +390,7 @@ def main():
             title_name = 'Precision plots of ' + eval_type
             if norm_dst:
                 title_name = 'Normalized ' + title_name
-            title_name += ' on VisEvent Testing Set'
+            title_name += f' on {args.dataset_name}'
             
             dataName = os.path.join(tmp_mat_path, f'aveSuccessRatePlot_{num_tracker}alg_error_{eval_type}.npz')
             plot_type = f'error_{eval_type}'
@@ -371,7 +401,7 @@ def main():
             x_label_name = 'Overlap threshold'
             y_label_name = 'Success rate'
             ranking_type = 'AUC'
-            title_name = 'Success plots of ' + eval_type + ' on VisEvent Testing Set'
+            title_name = 'Success plots of ' + eval_type + f' on {args.dataset_name}'
             
             dataName = os.path.join(tmp_mat_path, f'aveSuccessRatePlot_{num_tracker}alg_overlap_{eval_type}.npz')
             plot_type = f'overlap_{eval_type}'
