@@ -1,0 +1,11 @@
+MANIFEST.in
+setup.py
+visevent_eval/__init__.py
+visevent_eval/evaluator.py
+visevent_eval.egg-info/PKG-INFO
+visevent_eval.egg-info/SOURCES.txt
+visevent_eval.egg-info/dependency_links.txt
+visevent_eval.egg-info/entry_points.txt
+visevent_eval.egg-info/requires.txt
+visevent_eval.egg-info/top_level.txt
+visevent_eval/sequence_evaluation_config/VisEvent_testing_subset.txt

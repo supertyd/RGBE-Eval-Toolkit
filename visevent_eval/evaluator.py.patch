@@ -1,0 +1,47 @@
+--- work/visevent-eval/visevent_eval/evaluator.py
++++ work/visevent-eval/visevent_eval/evaluator.py
+@@ -3,6 +3,7 @@
+ import os
+ import matplotlib.pyplot as plt
+ import matplotlib
++import argparse
+ 
+ def config_tracker():
+     trackers = [
+@@ -282,14 +283,23 @@
+     plt.close()
+ 
+ def main():
+-    tmp_mat_path = './tmp_mat/'
+-    path_anno = './annos/'
+-    rp_all = './tracking_results/'
+-    save_fig_path = './res_fig/'
++    parser = argparse.ArgumentParser(description='Evaluate VisEvent Trackers.')
++    parser.add_argument('--tracking_results', type=str, default='./tracking_results', help='Path to your trackers results folder')
++    parser.add_argument('--annos', type=str, default='./annos', help='Path to VisEvent annos folder')
++    parser.add_argument('--tmp_mat', type=str, default='./tmp_mat', help='Path to save intermediate .npz files')
++    parser.add_argument('--res_fig', type=str, default='./res_fig', help='Path to save plot figures')
++    args = parser.parse_args()
++
++    tmp_mat_path = args.tmp_mat
++    path_anno = args.annos
++    rp_all = args.tracking_results
++    save_fig_path = args.res_fig
+     
+     evaluation_dataset_type = 'test_set'
+     norm_dst = False
+ 
+     trackers = config_tracker()
++    
++    # Auto-detect trackers based on folders in tracking_results directory if it exists
++    if os.path.exists(rp_all):
++        found_trackers = []
++        for d in os.listdir(rp_all):
++            if os.path.isdir(os.path.join(rp_all, d)) and d.endswith('_tracking_result'):
++                found_trackers.append({'name': d.replace('_tracking_result', '')})
++        if found_trackers:
++            trackers = found_trackers
++            
+     sequences = config_sequence(evaluation_dataset_type)
+ 
+     name_tracker_all = [t['name'] for t in trackers]

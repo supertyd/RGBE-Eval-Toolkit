@@ -1,24 +1,50 @@
-# FlexTrack-V2: Active Compensation for Missing Modalities in Multimodal Visual Tracking
+# RGBE-Eval-Toolkit
 
-This repository contains the LaTeX source code for the paper **"FlexTrack-V2: Active Compensation for Missing Modalities in Multimodal Visual Tracking"**.
+This is a Python evaluation toolkit for the **VisEvent SOT Benchmark**, originally implemented in MATLAB.
+It accurately reproduces the evaluation metrics (Success Rate / AUC and Precision) of the official VisEvent benchmark while offering a modern, easy-to-use Python interface.
 
-## Abstract
-Multimodal visual object tracking augments an RGB camera with auxiliary sensors (e.g., thermal, depth, or event) to maintain robustness in adverse conditions. However, real-world sensor rigs frequently suffer from de-synchronization or signal dropout, rendering the auxiliary modality intermittently missing. Conventional multimodal trackers degrade sharply under these conditions. In this paper, we propose FlexTrack-V2, a unified tracking framework that actively hallucinates missing information. We introduce the Bilateral Modality-specific feature Reconstruction (BMR) module, which couples with a Heterogeneous Mixture-of-Experts (HMoE) to actively synthesize missing features and dynamically allocate computation. We also propose Curriculum Missing Augmentation (CMA) with online self-distillation. Extensive experiments across nine benchmarks demonstrate that FlexTrack-V2 achieves parity with state-of-the-art models under complete modalities and yields substantial, consistent improvements under missing-modality regimes.
+## Features
+- **100% Metric Alignment:** Provides mathematically identical metric calculations to the original MATLAB toolkit (OPE Precision and Success Rate).
+- **Missing Modality Support:** Accurately handles missing modalities and absent frames, just like the original code.
+- **Visual Reproduction:** Generates precision and success plots with the exact same color palettes, line styles, and formatting as the MATLAB scripts.
+- **Auto-Detection:** Automatically detects tracking results based on directory names ending with `_tracking_result`.
+- **Easy Installation:** Can be installed as a standard Python package with a global CLI entry point.
 
-## Repository Structure
-- `main.tex`: The main LaTeX file.
-- `sections/`: Contains the individual sections (Abstract, Introduction, Related Work, Method, Experiments, Conclusion).
-- `tables/`: Contains the LaTeX files for the experimental tables (main results, ablations).
-- `figures/`: Contains the image assets.
-- `main.bib`: Bibliography file containing references.
+## Installation
 
-## Compilation
-To compile the PDF, you can use `pdflatex`, `latexmk`, or simply upload this directory to an Overleaf project. 
-For local compilation, ensure you have a standard TeX distribution (e.g., TeX Live, MacTeX) installed:
+Clone the repository and install it via `pip`:
 
 ```bash
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
+git clone https://github.com/supertyd/RGBE-Eval-Toolkit.git
+cd RGBE-Eval-Toolkit
+pip install -e .
 ```
+
+## Usage
+
+After installation, the toolkit provides a command-line interface (CLI) named `visevent-eval`.
+
+### Directory Structure Requirements
+Prepare your evaluation data. By default, the script looks for folders in your current directory:
+- `./tracking_results/`: Place your tracking outputs here. Each tracker should have its own folder named `[TrackerName]_tracking_result/`.
+- `./annos/`: The VisEvent annotations directory (containing `gt_rect` and `absent` folders).
+
+### Running Evaluation
+You can run the evaluation using the CLI:
+
+```bash
+visevent-eval \
+    --tracking_results ./tracking_results \
+    --annos ./annos \
+    --tmp_mat ./tmp_mat \
+    --res_fig ./res_fig
+```
+
+If you leave out the arguments, it will automatically search for the default folder names in the current directory:
+```bash
+visevent-eval
+```
+
+## Outputs
+- **Metrics (.npz files):** Saved in the `tmp_mat` directory for further analysis (replacing the old MATLAB `.mat` files).
+- **Figures:** High-quality plotted `.png` curves saved in the `res_fig` directory, perfectly matching the original MATLAB chart styles.

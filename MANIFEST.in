@@ -1,0 +1,1 @@
+recursive-include visevent_eval/sequence_evaluation_config *.txt
