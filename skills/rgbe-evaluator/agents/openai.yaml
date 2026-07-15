@@ -1,0 +1,3 @@
+display_name: RGBE Evaluator
+short_description: Zero-config tracking evaluation (VisEvent, CRSOT, COESOT)
+default_prompt: I have tracking results. Please run the RGBE-Eval-Toolkit to calculate SR/PR metrics and generate plots.

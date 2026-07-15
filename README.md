@@ -68,3 +68,15 @@ Simply run it with `--dataset_name YOUR_DATASET_NAME` to get beautifully titled 
 
 ## Related Projects
 - [opacity-black/RGBT_toolkit](https://github.com/opacity-black/RGBT_toolkit) - A comprehensive toolkit for RGBT (RGB + Thermal) tracking evaluation. Highly recommended if you are working with RGBT datasets!
+
+## 🤖 AI Agent / Codex Skill
+This repository includes a built-in AI skill (`rgbe-evaluator`) designed for agentic coding assistants like **Codex**. This skill transforms the evaluation process into a fully automated, conversational experience.
+
+**How to use:**
+1. Install the skill from the `skills/rgbe-evaluator` directory in your agent environment.
+2. Simply ask your agent: *"Evaluate the tracking results in `./my_results` using the rgbe-evaluator skill."*
+3. The agent will autonomously:
+   - Install the `RGBE-Eval-Toolkit` if missing.
+   - Run the appropriate evaluation commands based on the dataset structure.
+   - Parse the `.npz` data matrices.
+   - Summarize and report the final PR (Precision Rate) and SR/AUC (Success Rate) metrics directly in the chat.
